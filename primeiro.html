@@ -4,31 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: linear-gradient(45deg, rgb(3, 10, 110), rgba(1, 108, 170, 0.993));
+        }
+        div{
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            color: white;
+            border-radius: 15px;
+        }
+    </style>
 </head>
 <br><br>
-<body style="background-color:antiquewhite;"><div style="margin-left:600px;">
+<div style="margin-left:600px;">
 <form>
 <h3>Cadastro</h3>
-<label for="">Nome Completo:</label><input required type="text" data-ls-module="charCounter" minlength="5" maxlength="10" placeholder="Digite seu nome completo">
+<br>
+<label for="">Nome Completo:</label><input required type="text" pattern="[A-Za-z\s]+" oninput="this.value =  this.value.replace(/[^A-Za-z\s]/g, '')" data-ls-module="charCounter" minlength="15" maxlength="80" >
 <br><br>
+
 <label for="">Data de Nascimento:</label><input id="data-ls-module" type="date">
 <br><br>
+
 <label for="">Sexo:</label><input required type="text">
 <br><br>
+
 <label for="">Email:</label><input required type="text">
 <br><br>
-<label for="">Telefone Celular:</label><input required type="number tel">
+
+<label for="telefone">Celular:</label>
+  <input type="tel" id="telefone" name="telefone" required 
+         placeholder="(+55) xx-xxxxxxxxx" 
+         pattern="\(\+55\) \d{2}-\d{9}" 
+         maxlength="13">
+
+        
 <br><br>
-<label for="">Telefone Fixo:</label><input required type="text">
+
+<label for="">CPF:</label><input type="number" name="cpf" pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})">
 <br><br>
+
+<label for="telefone">Telefone-Fixo:</label>
+  <input type="tel" id="fixo" name="fixo" required 
+         placeholder="(+55) xx-xxxxxxxx" 
+         pattern="\(\+55\) \d{2}-\d{9}" 
+         maxlength="12">
+<br><br>
+
 <label for="">Endereço Completo:</label><input required type="text">
 <br><br>
-<label for="">Login:</label><input required type="text" data-ls-module="charCounter" minlength="6" maxlength="6">
+
+<label for="login">Login:</label>
+<input 
+  type="text" 
+  id="login" 
+  name="login" 
+  required 
+  pattern="[A-Za-z]{6}" 
+  title="O login deve conter exatamente 6 letras." 
+  maxlength="6"
+  oninput="this.value = this.value.replace(/[^A-Za-z]/g, '')">
 <br><br>
-<label for="">Senha:</label><input required type="password">
+
+<form onsubmit="return validatePasswords()">
+    <label for="password">Senha:</label>
+    <input 
+      type="password" 
+      id="password" 
+      name="password" 
+      required 
+      pattern="[A-Za-z]{8}" 
+      title="A senha deve conter exatamente 8 letras." 
+      maxlength="8"
+      oninput="this.value = this.value.replace(/[^A-Za-z]/g, '')">
+  
+    <label for="confirm_password">Confirmar Senha:</label>
+    <input 
+      type="password" 
+      id="confirm_password" 
+      name="confirm_password" 
+      required 
+      pattern="[A-Za-z]{8}" 
+      title="A senha deve conter exatamente 8 letras." 
+      maxlength="8"
+      oninput="this.setCustomValidity(this.value !== document.getElementById('password').value ? 'As senhas não coincidem.' : '')">
 <br><br>
-<label for="">Confirmação de Senha:</label><input required type="password">
-<br><br>
+
 <button type="submit">Enviar</button>
 <button type="reset">Limpar</button>
 <form>
