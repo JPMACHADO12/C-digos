@@ -19,6 +19,7 @@
 </head>
 <br><br>
 <div style="margin-left:600px;">
+  <body>
 <form>
 <h3>Cadastro</h3>
 <br>
@@ -28,7 +29,12 @@
 <label for="">Data de Nascimento:</label><input id="data-ls-module" type="date">
 <br><br>
 
-<label for="">Sexo:</label><input required type="text">
+<label for="sexo">Selecione o sexo:</label>
+<select id="sexo" name="sexo">
+    <option value="masculino">Masculino</option>
+    <option value="feminino">Feminino</option>
+    <option value="nao_dizer">Prefiro não dizer</option>
+</select>
 <br><br>
 
 <label for="">Email:</label><input required type="text">
@@ -92,8 +98,12 @@
       oninput="this.setCustomValidity(this.value !== document.getElementById('password').value ? 'As senhas não coincidem.' : '')">
 <br><br>
 
+
 <button type="submit">Enviar</button>
 <button type="reset">Limpar</button>
+<br>
+<p> Já possui login? Entre aqui. </p><a href="https://www.youtube.com/">Login</a>
+
 <form>
 </div>
 <body>
